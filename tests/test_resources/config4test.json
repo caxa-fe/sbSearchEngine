@@ -1,0 +1,19 @@
+{
+    "name": "sbSearchEngineConfig",
+    "version": "0.1.0",
+    "max_responses": 9,
+    "update_interval": 6,
+    "files": [
+        "../resources/file000.txt",
+        "../resources/file001.txt",
+        "../resources/file002.txt"
+
+    ],
+    "not_used": [
+        "../resources/file003.txt",
+        "../resources/file004.txt",
+        "../resources/file005.txt",
+        "../resources/file006.txt",
+        "../resources/file007.txt"
+    ]
+}

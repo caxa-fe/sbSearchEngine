@@ -1,0 +1,11 @@
+build/
+JSON_doc/
+.vscode/
+# Исключить все файлы в корневом каталоге
+/*.*
+# кроме этих
+!/.gitignore
+!/CMakeLists.txt
+!/config.json
+!/main.cpp
+!/requests.json
