@@ -6,7 +6,7 @@ Config::Config()
     // Reading config.json
     try
     {
-        std::string cFile = std::string{CURRENT_SOURCE_DIR} + "/" + std::string{CONFIG_FILE};
+        std::string cFile = std::string{CONFIG_FILE};
         std::ifstream in(cFile);       
         if (!in.is_open())
         {
@@ -16,9 +16,9 @@ Config::Config()
         in.close();
     }
 
-    catch (std::wstring error_message)
+    catch (std::string error_message)
     {
-        std::wcout << error_message << std::endl;
+        std::cout << error_message << std::endl;
         std::exit(1);
     }
 
@@ -31,7 +31,7 @@ Config::Config()
     }
     catch (const char* error_message)
     {
-        std::wcout << error_message << std::endl;
+        std::cout << error_message << std::endl;
         std::exit(2);
     }
     try
@@ -43,37 +43,36 @@ Config::Config()
     }
     catch (const char* error_message)
     {
-        std::wcout << error_message << std::endl;
+        std::cout << error_message << std::endl;
         exit(3);
     }
     if (!Config::config.contains("max_responses") || Config::config["max_responses"] < 1)
     {
-        std::wcout << "WARNING: max_responses not define in config file. Assigned max_responses = "<< DEFAULT_MAX_RESPONSES << std::endl;;
+        std::cout << "WARNING: max_responses not define in config file. Assigned max_responses = "<< DEFAULT_MAX_RESPONSES << std::endl;;
         Config::config["max_responses"] = DEFAULT_MAX_RESPONSES;
     }
     if (!Config::config.contains("update_interval") || Config::config["update_interval"] < 1)
     {
-        std::wcout << "WARNING: update_interval not define in config file. Assigned update_interval = " << DEFAULT_UPDATE_INTERVAL << std::endl;;
+        std::cout << "WARNING: update_interval not define in config file. Assigned update_interval = " << DEFAULT_UPDATE_INTERVAL << std::endl;;
         Config::config["update_interval"] = DEFAULT_UPDATE_INTERVAL;
     } 
 
 // Reading request.json
     try
     {
-        std::string cFile = std::string{CURRENT_SOURCE_DIR} + "/" + std::string{REQUEST_FILE};
+        std::string cFile = std::string{REQUEST_FILE};
         std::ifstream in(cFile);       
         if (!in.is_open())
         {
-            std::string str {"ERROR: Can't open " + std::string{REQUEST_FILE} + " for reading."};
-            throw std::wstring{str.begin(),str.end()};
+            throw std::string{"ERROR: Can't open " + std::string{REQUEST_FILE} + " for reading."};
         }
         in >> Config::request;
         in.close();
     }
 
-    catch (std::wstring error_message)
+    catch (std::string error_message)
     {
-        std::wcout << error_message << std::endl;
+        std::cout << error_message << std::endl;
         std::exit(1);
     }
 
@@ -86,7 +85,7 @@ Config::Config()
     }
     catch (const char* error_message)
     {
-        std::wcout << error_message << std::endl;
+        std::cout << error_message << std::endl;
         exit(3);
     }
 }

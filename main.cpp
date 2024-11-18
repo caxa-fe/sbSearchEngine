@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <locale>
-#include <io.h>
-#include <fcntl.h>
 #include <queue>
 #include <thread>
 #include <future>
@@ -23,7 +21,6 @@ void saveResult(const std::deque<Request> &);
 int main()
 {
     setlocale(LC_ALL, "");
-    _setmode(_fileno(stdout), _O_U16TEXT);
     std::wcout << "--- Skillbox Search Engine ---" << std::endl;
     std::wcout << "         version " << PROJECT_VERSION << std::endl; 
     std::wcout << std::endl; 
@@ -214,7 +211,7 @@ void makeSearch(const std::map<std::wstring, std::map<size_t, size_t> > & common
     
 }
 
-void saveResult(const std::deque<Request> & deqRequest)
+void saveResult(const std::deque<Request> & deqRequest )
 {
     std::string j {"{ \"answers\": [ " };
     for(size_t i = 0; i < deqRequest.size(); ++i)
@@ -251,18 +248,22 @@ void saveResult(const std::deque<Request> & deqRequest)
     }
     j += "]} ";
 
-    std::ofstream o(std::string{CURRENT_SOURCE_DIR} + "/" + std::string{ANSWER_FILE});
+    std::string fName = std::string{ANSWER_FILE};
+    std::ofstream o(fName);
     try
     {
         if (!o.is_open())
         {
-            std::string str {"ERROR: Can't open " + std::string{ANSWER_FILE} + " for writing."};
+            std::string str {"ERROR: Can't open " + fName + " for writing."};
             throw std::wstring{str.begin(), str.end()};
         }
         o << j;
         o.close();
-        std::string str {"Answer saved in file: " + std::string{CURRENT_SOURCE_DIR} + "/" + std::string{ANSWER_FILE}};
-        std::wcout << std::wstring{str.begin(), str.end()} << std::endl;
+
+        std::wstring str = L"Answer saved in file: ";
+        sbse::translate(str, sbse::lang);
+        str += std::wstring{fName.begin() , fName.end()};
+        std::wcout << str << std::endl;
     }
 
     catch (std::wstring error_message)

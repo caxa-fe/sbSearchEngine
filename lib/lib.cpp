@@ -59,7 +59,8 @@ void sbse::translate(std::wstring & msg, const char & lang)
         {L"Common Index is empty. Have to build it first.",  L"Общий Индекс пуст. Сперва его надо построить."},
         {L"Building index...", L"Строим индекс..."},
         {L"Done.", L"Готово."},
-        {L"Something went wrong. Index is empty.", L"Что-то пошло не так. Индекс пуст."}
+        {L"Something went wrong. Index is empty.", L"Что-то пошло не так. Индекс пуст."},
+        {L"Answer saved in file: ", L"Результат сохранен в файле: "}
     };
     if (lang == '1') return;
     else if (dict.count(msg))

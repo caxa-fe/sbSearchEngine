@@ -6,25 +6,25 @@ set(PROJECT_VERSION 0.1.${PATCH_VERSION})
 
 project(sbSearchEngine VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
 
-configure_file(lib/constants.h.in ${CMAKE_CURRENT_SOURCE_DIR}/lib/constants.h )
+configure_file(lib/constants.h.in lib/constants.h )
 
 set(SOURCE_EXE main.cpp)	
 set(SOURCE_LIB lib/lib.cpp)	
 add_library(lib STATIC ${SOURCE_LIB})
 
 add_library(nlohmann INTERFACE)
-target_include_directories(nlohmann INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/lib/nlohmann/)
+target_include_directories(nlohmann INTERFACE lib/nlohmann/)
 
-include_directories (
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/nlohmann/
+include_directories (lib/)
+
+
+add_executable(sbSearchEngine main.cpp 
+lib/lib.cpp
+lib/config.cpp
+lib/indexfile.cpp
+lib/request.cpp
 )
-add_library(config lib/config.cpp)
-add_library(indexfile lib/indexfile.cpp)
-add_library(request lib/request.cpp)
-
-add_executable(sbSearchEngine main.cpp)
-target_link_libraries(sbSearchEngine lib nlohmann config indexfile request)
+target_link_libraries(sbSearchEngine nlohmann)
 
 ## ---- Tests -----
 
