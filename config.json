@@ -4,8 +4,8 @@
     "max_responses": 9,
     "update_interval": 6,
     "files": [
-        "../resources/file000.txt",
-        "../resources/file001.txt",
-        "../resources/file002.txt"
+        "resources/file000.txt",
+        "resources/file001.txt",
+        "resources/file002.txt"
     ]
 }
