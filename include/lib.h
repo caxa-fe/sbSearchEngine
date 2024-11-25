@@ -1,11 +1,11 @@
 #pragma once
 #include "constants.h"
-#include <limits>
 #include <vector>
 #include <string>
-#include <sstream>
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <limits>
 #include <map>
 #include <set>
 #include <deque>
@@ -15,10 +15,10 @@
 #include <cwctype>
 
 
+
+
 namespace sbse {
-
 static char lang {'1'};  // Language code: 1 - En, 2 - Ru
-
 void showTitle(char);
 void selectLanguage(char &);
 
@@ -33,7 +33,6 @@ void string2Words(std::wstring &, std::vector<std::wstring> &);
 //template<typename T>
 std::string toString(size_t);
 std::string toString(double);
-
 
 }
 

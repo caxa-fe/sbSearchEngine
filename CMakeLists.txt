@@ -17,20 +17,24 @@ configure_file(constants.h.in ${MY_INCLUDE_DIR}/constants.h )
 
 #====== TESTS =========
 
-cmake_policy(SET CMP0144 NEW)
-set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/tests/google)
-find_package(GTest REQUIRED)
+include(FetchContent)
 
-if(GTest_FOUND) 
-  message("--- Google test found ---")
-  message(${GTEST_INCLUDE_DIRS})
-  message(${GTEST_ROOT})
-  #message(${GTEST_BOTH_LIBRARIES})
-  message(${GTEST_LIBRARIES})
-  message(${GTEST_MAIN_LIBRARIES})
-endif()
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG release-1.12.1
+)
+FetchContent_MakeAvailable(googletest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# cmake_policy(SET CMP0144 NEW)
+# set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/tests/google)
+# find_package(GTest REQUIRED)
 
 enable_testing()
+
+#====== END OF TESTS =========
 
 add_subdirectory(src)
 add_subdirectory(tests)

@@ -7,7 +7,7 @@ class Config
 public:
     static Config& GetLink()
     {
-        static Config s;
+        static Config s ;
         return s;
     }
     const nlohmann::json& getConfig() const;

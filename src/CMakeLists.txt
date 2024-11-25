@@ -5,6 +5,7 @@ set(Src
 	"indexfile.cpp"
 	"lib.cpp"
 	"request.cpp"
+	"functions.cpp"
 	"main.cpp"
 )
 

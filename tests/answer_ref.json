@@ -1,0 +1,31 @@
+{ "answers":
+	[
+		{
+			"reqID" : 0,
+			"request" : "Важно иметь ввиду",
+			"reqDone" : true,
+			"result" : true,
+			"relevance" : {"2" : 1, "1" : 1, "0" : 1}
+		},
+		{
+			"reqID" : 1,
+			"request" : "Гагарин нн Луне",
+			"reqDone" : true,
+			"result" : false
+		},
+		{
+			"reqID" : 2,
+			"request" : "Тема психологов и философов",
+			"reqDone" : true,
+			"result" : true,
+			"relevance" : {"2" : 1, "1" : 0.5}
+		},
+		{
+			"reqID" : 3,
+			"request" : "Важно иметь ввиду психическое здоровье людей",
+			"reqDone" : true,
+			"result" : true,
+			"relevance" : {"2" : 1, "1" : 0.667, "0" : 0.667}
+		}
+	]
+}
