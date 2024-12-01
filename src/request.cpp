@@ -34,9 +34,8 @@ const std::string & Request::GetReqString() const
 }
 
 void Request::MakeSearch(const std::map<std::wstring, std::map<size_t, size_t> >& commonIndex)
-{
-    //std::wstring wstr = sbse::utf8_utf16(reqString);
-    //std::wcout << wstr << std::endl;
+{   // commonIndex: [word][docID, count]
+
     if(commonIndex.empty())
     {   
         std::wcout << L"** CommonIndex is empty" << std::endl; 
@@ -64,8 +63,12 @@ void Request::MakeSearch(const std::map<std::wstring, std::map<size_t, size_t> >
         if (countMax < p.second) countMax = p.second;
     }
 
+    Config& json = Config::GetLink();
+    nlohmann::json cfg = json.getConfig();
+    size_t answersLimit {0};    // Для посчета количества ответов
+
     static_cast<double>(countMax);
-    while (!reqSummary.empty())
+    while (!reqSummary.empty() && answersLimit < cfg["max_responses"])
     {
         auto p = reqSummary.top();
         reqSummary.pop();
@@ -74,7 +77,7 @@ void Request::MakeSearch(const std::map<std::wstring, std::map<size_t, size_t> >
         rel = static_cast<double>(roundRel);
         rel /= double{DEFAULT_PRECISION};
         reqSumRel.push_back(std::pair(p.second, rel));
-
+        ++answersLimit;
     }
     reqDone = true;
 }

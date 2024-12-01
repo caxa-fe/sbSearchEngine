@@ -1,5 +1,6 @@
 #pragma once
 #include "lib.h"
+#include "config.h"
 
 class Request
 {
