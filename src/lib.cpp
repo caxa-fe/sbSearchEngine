@@ -49,9 +49,10 @@ void sbse::translate(std::wstring & msg, const char & lang)
 {
     std::map<std::wstring, std::wstring> dict 
     {
-        {L"1 - Show configuration", L"1 - Показать конфигурацию"},
+        {L"1 - Help", L"1 - Инструкция"},
         {L"2 - Build a new index", L"2 - Построить новый индекс"},
         {L"3 - Make search", L"3 - Произвести поиск"},
+        {L"4 - Show configuration", L"4 - Показать конфигурацию"},
         {L"8 - Переключиться на русский", L"8 - Switch to English"},
         {L"9 - Quit", L"9 - Выйти"},
         {L"    -- MAIN MENU --", L"    -- Главное меню --"},

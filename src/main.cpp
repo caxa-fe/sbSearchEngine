@@ -44,9 +44,15 @@ int main()
             else sbse::lang = '1';
             choice = ' ';
         }
-        else if (choice == '1')
+        else if (choice == '4')
         {
             readConfig();
+            std::wcout << L"----------------------------" << std::endl;
+            choice = ' ';
+        }
+        else if (choice == '1')
+        {
+            showHelp(sbse::lang);
             std::wcout << L"----------------------------" << std::endl;
             choice = ' ';
         }
@@ -86,13 +92,16 @@ int main()
         menuItem = L"    -- MAIN MENU --";
         sbse::translate(menuItem, sbse::lang);
         std::wcout << menuItem << std::endl;
-        menuItem = L"1 - Show configuration";
+        menuItem = L"1 - Help";
         sbse::translate(menuItem, sbse::lang);
         std::wcout << menuItem << std::endl;
         menuItem = L"2 - Build a new index";
         sbse::translate(menuItem, sbse::lang);
         std::wcout << menuItem << std::endl;
         menuItem = L"3 - Make search";
+        sbse::translate(menuItem, sbse::lang);
+        std::wcout << menuItem << std::endl;
+        menuItem = L"4 - Show configuration";
         sbse::translate(menuItem, sbse::lang);
         std::wcout << menuItem << std::endl;
         menuItem = L"8 - Переключиться на русский";

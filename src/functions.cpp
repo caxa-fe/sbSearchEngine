@@ -108,7 +108,22 @@ void saveResult(const std::deque<Request> & deqRequest, char& lang )
         if ( i < deqRequest.size() - 1) 
             j += ", ";
     }
-    j += "]} ";
+    j += "],\n\"docIDs\": {";
+    
+    Config& json = Config::GetLink();
+    nlohmann::json cfg = json.getConfig();
+
+    size_t docID {0};
+
+    for (std::string  str : cfg["files"])
+    {
+         j += "\"" + sbse::toString(docID) + "\" : \"" + str +"\"";
+         ++docID;
+         if (docID != cfg["files"].size())
+            j += ", ";
+    }
+
+    j += "}}";
 
     std::string fName = std::string{ANSWER_FILE};
     std::ofstream o(fName);
@@ -166,4 +181,44 @@ void readConfig()
         std::wcout << "   " << wstr << std::endl;
     }
     std::wcout << "\n-- End of Config." << std::endl;
+}
+
+void showHelp(char & lang)
+{
+    std::string fName {"src/help_en.txt"};
+    if (lang == '2') fName = "src/help_ru.txt";
+
+    std::ifstream in(fName);
+    if (!in.is_open())
+    {
+        if (lang == '2')
+        {
+            std::wcout << L"*** Файл с инструкцией не найден." << std::endl; 
+        }
+        else
+            std::cout << "*** Help file not found." << std::endl;
+
+        return;
+    }
+    std::string text {};
+    std::string line {};
+    while (std::getline(in, line))
+    {
+        text += "\n" + line;
+    }
+    in.close();
+
+    if (lang == '2')
+    {
+        std::wstring wtext = sbse::utf8_utf16(text);
+        std::wcout << "------------------------------" << std::endl;
+        std::wcout << wtext << std::endl; 
+    }
+    else
+    {
+        std::cout << "------------------------------" << std::endl;
+        std::cout << text << std::endl;
+    }
+
+
 }

@@ -17,7 +17,6 @@ struct FuncTest : public testing::Test {
     std::map<std::wstring, std::map<size_t, size_t> > commonIndex; // [word][docID,count]
     nlohmann::json answerRef;
 
-    std::string str {"AU-au-au!"};
     void SetUp() 
     {
         std::ifstream in("answer_ref.json"); 
@@ -27,7 +26,8 @@ struct FuncTest : public testing::Test {
         makeIndex(deqIndex);
         makeCommonIndex(deqIndex, commonIndex);
         makeSearch(commonIndex, deqRequest);
-        saveResult(deqRequest);
+        char lang = '1';
+        saveResult(deqRequest, lang);
     } 
     
 

@@ -8,12 +8,8 @@ project(sbSearchEngine VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-static")
 
-set(MY_INCLUDE_DIR
-  ${CMAKE_SOURCE_DIR}/include
-)
+set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 set(MY_SRC_DIR ${CMAKE_SOURCE_DIR}/src)
-
-configure_file(constants.h.in ${MY_INCLUDE_DIR}/constants.h )
 
 #====== TESTS =========
 

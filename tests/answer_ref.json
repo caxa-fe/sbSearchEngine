@@ -27,5 +27,11 @@
 			"result" : true,
 			"relevance" : {"2" : 1, "1" : 0.667, "0" : 0.667}
 		}
-	]
+	],
+	"docIDs": 
+		{
+			"0" : "resources/file000.txt", 
+			"1" : "resources/file001.txt", 
+			"2" : "resources/file002.txt"
+		}
 }

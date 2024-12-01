@@ -1,7 +1,6 @@
 #pragma once
 #define PROJECT_VERSION "0.1.0"
 #define PROJECT_NAME "sbSearchEngine"
-#define CURRENT_SOURCE_DIR "E:/DOCS/C++/skillBox/Itog/proj3"
 #define CONFIG_FILE "config.json"
 #define REQUEST_FILE "requests.json"
 #define ANSWER_FILE "answer.json"

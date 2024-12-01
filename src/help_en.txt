@@ -1,0 +1,12 @@
+The search is performed on text files-documents, the path to which is specified in "config.json" in the "files" section.
+Search phrases specified in the "requests.json" file are searched.
+The search results are saved in the file "answer.json"
+The format of the "answer.json" file is:
+"reqID" - request identifier
+"request" - query string,
+"reqDone" - "search performed" flag,
+"result" - "search result is positive" flag,
+"relevance" - relative relevance of search results. Document identifiers are specified in descending order of relevance.
+"docIDs" - list of document identifiers
+
+Before starting the search it is necessary to index documents - build an index.
